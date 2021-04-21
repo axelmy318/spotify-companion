@@ -2,6 +2,8 @@ import React from 'react'
 
 import {Row, Col, Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap'
 
+import { ImSpotify as LogoSpotify } from 'react-icons/all'
+
 const FavouriteTrack = ({ header, data }) => {
     return (
         <Card>
@@ -9,9 +11,9 @@ const FavouriteTrack = ({ header, data }) => {
             <Card.Img variant="top" src={`${data.album.images[0].url}`} />
             <Card.Body>
                 <Card.Title>{data.name}</Card.Title>
-                <Card.Subtitle>{data.artists[0].name}</Card.Subtitle>
+                <Card.Subtitle>by {data.artists[0].name}</Card.Subtitle>
                 <br />
-                <Button variant="success">Spotify</Button>
+                <Button variant="success"><LogoSpotify /> Spotify</Button>
             </Card.Body>
         </Card>
     )

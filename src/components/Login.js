@@ -1,5 +1,8 @@
 import React from 'react'
+
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
+
+import { ImSpotify as LogoSpotify } from 'react-icons/all'
 
 const Login = () => {
     const authorizeSpotify = (e) => {
@@ -13,16 +16,16 @@ const Login = () => {
     return (
         <>
             <Container fluid>
-                <Row style={{marginTop: '40vh'}}>
+                <Row style={{marginTop: '25vh'}}>
                     <Col md={4}></Col>
                     <Col md={4}>
                         <Card className='mx-auto align-middle'>
                             <Card.Body>
                                 <Card.Title>Login with spotify</Card.Title>
                                 <Card.Text>
-                                    This website will not save any of your data, only display it and suggest musics based on what you listen to.
+                                    This website will not save any of your data.<br />It will only display it and suggest new musics based on what you listen to.
                                 </Card.Text>
-                                <Button onClick={authorizeSpotify}>Authorize</Button>
+                                <Button onClick={authorizeSpotify} variant='success'><LogoSpotify /> Authorize</Button>
                             </Card.Body>
                         </Card>
                     </Col>

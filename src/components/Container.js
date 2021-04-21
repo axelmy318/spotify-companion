@@ -48,20 +48,33 @@ const Container = () => {
 
     return (
         <div>
-            <Row style={{marginTop: '20px'}}>
-                <Col md={3}>
-                {spotify.topTracks.short.status === 'fulfilled' &&
-                   <TrackCard header='Track of the moment' data={spotify.topTracks.short.content[0]} />
-                }
+            <Row>
+                <Col md={1}></Col>
+                <Col md={10}>
+                    <Row style={{marginTop: '20px'}}>
+                        <Col md={3}>
+                        {spotify.topArtists.short.status === 'fulfilled' &&
+                            <ArtistCard header='Artist / band of the moment' data={spotify.topArtists.short.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topArtists.long.status === 'fulfilled' &&
+                            <ArtistCard header='Favorite artist / band' data={spotify.topArtists.long.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topTracks.short.status === 'fulfilled' &&
+                        <TrackCard header='Track of the moment' data={spotify.topTracks.short.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topTracks.long.status === 'fulfilled' &&
+                        <TrackCard header='Favorite track' data={spotify.topTracks.long.content[0]} />
+                        }
+                        </Col>
+                    </Row>
                 </Col>
-                <Col md={3}>
-                {spotify.topArtists.short.status === 'fulfilled' &&
-                    <ArtistCard header='Artist of the moment' data={spotify.topArtists.short.content[0]} />
-                }
-                </Col>
-                <Col md={3}>
-                    {spotify.topTracks.long.status === 'fulfilled' && spotify.topTracks.long.content.map(content => <p>{content.name}</p>)}
-                </Col>
+                <Col md={1}></Col>
             </Row>
         </div>
     )
