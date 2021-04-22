@@ -7,11 +7,12 @@ import Table from 'react-bootstrap/Table'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
+import { IoTrophySharp as LogoTrophy } from 'react-icons/io5'
 
 const ArtistsList = ({ long, short }) => {
     const [key, setKey] = useState('long');
     const cardHeight = '40vh'
-
+    
     const LIST_STYLE = {
         height: cardHeight,
         maxHeight: cardHeight
@@ -20,6 +21,32 @@ const ArtistsList = ({ long, short }) => {
     const goToSpotifyPage = (e, url) => {
         e.preventDefault()
         window.open(url, '_blank')
+    }
+
+    const displayTrophy = (number) => {
+        let color = 'white'
+        switch(number){
+            case 1:
+                color = 'gold'
+                break;
+            case 2:
+                color = 'silver'
+                break;
+            case 3:
+                color = '#875600'
+                break;
+            default:
+                break;
+        }
+
+        if(number >= 1 && number <= 3){
+            return (
+                <IconContext.Provider value={{color: color}}>
+                    <LogoTrophy />
+                </IconContext.Provider>
+            )
+        }
+        return number;
     }
 
     return (
@@ -36,8 +63,9 @@ const ArtistsList = ({ long, short }) => {
                         <Table style={{marginTop: '20px'}}>
                             <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
                                 <tbody style={LIST_STYLE}>
-                                    {long.map(artist => 
+                                    {long.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
+                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{artist.name}</td>
                                             <td className='align-middle'>
@@ -55,8 +83,9 @@ const ArtistsList = ({ long, short }) => {
                         <Table style={{marginTop: '20px'}}>
                             <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
                                 <tbody style={LIST_STYLE}>
-                                    {short.map(artist => 
+                                    {short.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
+                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '1px solid black'}} /></td>
                                             <td className='align-middle'>{artist.name}</td>
                                             <td className='align-middle'>

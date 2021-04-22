@@ -7,6 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
+import { IoTrophySharp as LogoTrophy } from 'react-icons/io5'
 
 const TracksList = ({ long, short }) => {
     const [key, setKey] = useState('long');
@@ -35,6 +36,32 @@ const TracksList = ({ long, short }) => {
         return str.substr(0, str.length - 2)
     }
 
+    const displayTrophy = (number) => {
+        let color = 'white'
+        switch(number){
+            case 1:
+                color = 'gold'
+                break;
+            case 2:
+                color = 'silver'
+                break;
+            case 3:
+                color = '#875600'
+                break;
+            default:
+                break;
+        }
+
+        if(number >= 1 && number <= 3){
+            return (
+                <IconContext.Provider value={{color: color}}>
+                    <LogoTrophy />
+                </IconContext.Provider>
+            )
+        }
+        return number;
+    }
+
     return (
         <Card>
             <Card.Header>Your favorite tracks</Card.Header>
@@ -49,8 +76,9 @@ const TracksList = ({ long, short }) => {
                         <Table style={{marginTop: '20px'}}>
                             <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
                                 <tbody style={LIST_STYLE}>
-                                    {long.map(track => 
+                                    {long.map((track, index) => 
                                         <tr style={{style:'100%'}}>
+                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{track.artists[0].name}</span></td>
                                             <td className='align-middle'>
@@ -68,8 +96,9 @@ const TracksList = ({ long, short }) => {
                         <Table style={{marginTop: '20px'}}>
                             <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
                                 <tbody style={LIST_STYLE}>
-                                    {short.map(track => 
+                                    {short.map((track, index) => 
                                         <tr style={{style:'100%'}}>
+                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '1px solid black'}} /></td>
                                             <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
