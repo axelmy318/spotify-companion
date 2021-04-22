@@ -37,15 +37,20 @@ const TracksList = ({ long, short }) => {
 
     const displayTrophy = (number) => {
         let color = 'white'
+        let size = '15px'
+
         switch(number){
             case 1:
                 color = 'gold'
+                size = '28px'
                 break;
             case 2:
                 color = 'silver'
+                size = '22px'
                 break;
             case 3:
                 color = '#875600'
+                size = '15px'
                 break;
             default:
                 break;
@@ -53,7 +58,7 @@ const TracksList = ({ long, short }) => {
 
         if(number >= 1 && number <= 3){
             return (
-                <IconContext.Provider value={{color: color}}>
+                <IconContext.Provider value={{color, size}}>
                     <LogoTrophy />
                 </IconContext.Provider>
             )
@@ -77,7 +82,7 @@ const TracksList = ({ long, short }) => {
                                 <tbody style={LIST_STYLE}>
                                     {long.map((track, index) => 
                                         <tr style={{style:'100%'}}>
-                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
+                                            <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
@@ -97,8 +102,8 @@ const TracksList = ({ long, short }) => {
                                 <tbody style={LIST_STYLE}>
                                     {short.map((track, index) => 
                                         <tr style={{style:'100%'}}>
-                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
-                                            <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '1px solid black'}} /></td>
+                                            <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
+                                            <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>

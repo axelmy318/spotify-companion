@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Card from 'react-bootstrap/Card'
@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button'
 import Tab from 'react-bootstrap/Tab'
 import Tabs from 'react-bootstrap/Tabs'
 import Dropdown from 'react-bootstrap/Dropdown'
-import DropdownButton from 'react-bootstrap/DropdownButton'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
@@ -32,7 +31,7 @@ const Recommendations = ({ status, recommendations, seeds }) => {
     }
 
     const loadRecommendations = (e) => {
-        e.preventDefault()
+        if(e) e.preventDefault()
         console.log("Seeds", seeds)
         dispatch(fetchRecommendationsPending())
         dispatch(fetchRecommendations(user.accessToken, seeds))
@@ -53,7 +52,7 @@ const Recommendations = ({ status, recommendations, seeds }) => {
 
     const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
         <a
-          href=""
+          href="#"
           ref={ref}
           onClick={e => {
             e.preventDefault();
@@ -67,6 +66,10 @@ const Recommendations = ({ status, recommendations, seeds }) => {
         </a>
       ));
 
+    if(status === 'none'){
+        loadRecommendations(null)
+    }
+
     if(status === 'fulfilled'){
         return (
             <Card>
@@ -78,9 +81,10 @@ const Recommendations = ({ status, recommendations, seeds }) => {
                         <Dropdown.Menu size="sm" title=""> 
                             <Dropdown.Item onClick={(e) => loadRecommendations(e)}>Refresh</Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item>Queue 5 first</Dropdown.Item>
-                            <Dropdown.Item>Queue 10 first</Dropdown.Item>
+                            <Dropdown.Item>Queue 5 firsts</Dropdown.Item>
+                            <Dropdown.Item>Queue 10 firsts</Dropdown.Item>
                             <Dropdown.Item>Queue all</Dropdown.Item>
+                            <Dropdown.Divider />
                             <Dropdown.Item>Create playlist</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>

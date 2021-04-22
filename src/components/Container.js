@@ -29,6 +29,7 @@ const Container = () => {
     }
 
     const loadSpotifyData = () => {
+        console.log(user)
         if(spotify.topArtists.short.status === 'none'){
             dispatch(fetchTopArtistsPending('short_term'))
             dispatch(fetchTopArtists(user.accessToken, 'short_term'))
@@ -68,6 +69,7 @@ const Container = () => {
         dataSample.map(sampleId => {
             tracksSeed.push(dataset[sampleId].id)
             artistsSeed.push(dataset[sampleId].artists[0].id)
+            return null
         })
 
         return {
