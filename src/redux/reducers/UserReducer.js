@@ -8,6 +8,7 @@ const initialState = {
 }
 
 const UserReducer = (state = initialState, action) => {
+    action = action.action ? action.action : action
     switch(action.type){
         case 'SET_TOKEN':
             return {

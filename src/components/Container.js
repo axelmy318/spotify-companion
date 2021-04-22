@@ -48,7 +48,7 @@ const Container = () => {
         }
     }
 
-    if(user.code !== null && user.code !== undefined)
+    if(user.accessToken !== null && user.accessToken !== undefined)
         loadSpotifyData()
 
     const getSeedsFrom = (dataset) => {

@@ -10,9 +10,13 @@ import App from './components/App'
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css'
 
+let composeArg = window.__REDUX_DEVTOOLS_EXTENSION__ ? 
+                compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(createPromise())) :
+                applyMiddleware(createPromise())
+                
 const store = createStore(
   reducers,
-  compose(window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(), applyMiddleware(createPromise()))
+  composeArg
 )
 
 ReactDOM.render(
