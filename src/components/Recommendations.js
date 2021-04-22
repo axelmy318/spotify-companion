@@ -81,11 +81,11 @@ const Recommendations = ({ status, recommendations, seeds }) => {
                         <Dropdown.Menu size="sm" title=""> 
                             <Dropdown.Item onClick={(e) => loadRecommendations(e)}>Refresh</Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item>Queue 5 firsts</Dropdown.Item>
-                            <Dropdown.Item>Queue 10 firsts</Dropdown.Item>
-                            <Dropdown.Item>Queue all</Dropdown.Item>
+                            <Dropdown.Item>Queue 5 firsts (coming soon...)</Dropdown.Item>
+                            <Dropdown.Item>Queue 10 firsts (coming soon...)</Dropdown.Item>
+                            <Dropdown.Item>Queue all (coming soon...)</Dropdown.Item>
                             <Dropdown.Divider />
-                            <Dropdown.Item>Create playlist</Dropdown.Item>
+                            <Dropdown.Item>Create playlist (coming soon...)</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                     </div>
