@@ -79,9 +79,7 @@ const Container = () => {
 
     return (
         <div>
-            <div style={{margin: '20px'}}>
-
-            </div>
+            <div style={{margin: '20px'}}></div>
             <Row>
                 <Col md={1}></Col>
                 <Col md={10}>
@@ -134,6 +132,7 @@ const Container = () => {
                 </Col>
                 <Col md={1}></Col>
             </Row>
+            <div style={{margin: '20px'}}></div>
         </div>
     )
 }
