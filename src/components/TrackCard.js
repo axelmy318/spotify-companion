@@ -1,8 +1,8 @@
 import React from 'react'
 
 import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
 
+import {IconContext} from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
 
 const FavouriteTrack = ({ header, data }) => {
@@ -19,7 +19,9 @@ const FavouriteTrack = ({ header, data }) => {
                 <Card.Title>{data.name}</Card.Title>
                 <Card.Subtitle>by {data.artists[0].name}</Card.Subtitle>
                 <br />
-                <Button variant="success" onClick={(e) => goToSpotifyPage(e)}><LogoSpotify /> Spotify</Button>
+                <IconContext.Provider value={{color: 'green', size: '40px'}}>
+                    <LogoSpotify className='clickable' onClick={(e) => goToSpotifyPage(e)}/>
+                </IconContext.Provider>
             </Card.Body>
         </Card>
     )

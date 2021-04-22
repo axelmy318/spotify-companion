@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
-import { IoTrophySharp as LogoTrophy } from 'react-icons/io5'
+import { FaTrophy as LogoTrophy } from 'react-icons/fa'
 
 const TracksList = ({ long, short }) => {
     const [key, setKey] = useState('long');
@@ -32,21 +32,25 @@ const TracksList = ({ long, short }) => {
                 
             addedNames.push(artists[i].name)
         }
-        console.log('Added names', addedNames, 'String', str)
         return str.substr(0, str.length - 2)
     }
 
     const displayTrophy = (number) => {
         let color = 'white'
+        let size = '15px'
+
         switch(number){
             case 1:
                 color = 'gold'
+                size = '28px'
                 break;
             case 2:
                 color = 'silver'
+                size = '22px'
                 break;
             case 3:
                 color = '#875600'
+                size = '15px'
                 break;
             default:
                 break;
@@ -54,7 +58,7 @@ const TracksList = ({ long, short }) => {
 
         if(number >= 1 && number <= 3){
             return (
-                <IconContext.Provider value={{color: color}}>
+                <IconContext.Provider value={{color, size}}>
                     <LogoTrophy />
                 </IconContext.Provider>
             )
@@ -78,9 +82,9 @@ const TracksList = ({ long, short }) => {
                                 <tbody style={LIST_STYLE}>
                                     {long.map((track, index) => 
                                         <tr style={{style:'100%'}}>
-                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
+                                            <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
-                                            <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{track.artists[0].name}</span></td>
+                                            <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>
                                                     <LogoSpotify className='clickable' onClick={(e) => goToSpotifyPage(e, track.external_urls.spotify)}/>
@@ -98,8 +102,8 @@ const TracksList = ({ long, short }) => {
                                 <tbody style={LIST_STYLE}>
                                     {short.map((track, index) => 
                                         <tr style={{style:'100%'}}>
-                                            <td className='align-middle'>{displayTrophy(index+1)}</td>
-                                            <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '1px solid black'}} /></td>
+                                            <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
+                                            <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>
