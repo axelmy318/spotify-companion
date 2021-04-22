@@ -12,6 +12,8 @@ import {
 
 import TrackCard from './TrackCard'
 import ArtistCard from './ArtistCard'
+import ArtistsList from './ArtistsList'
+import TracksList from './TracksList'
 
 const Container = () => {
     const user = useSelector(state => state.User)
@@ -49,10 +51,13 @@ const Container = () => {
 
     return (
         <div>
+            <div style={{margin: '20px'}}>
+
+            </div>
             <Row>
                 <Col md={1}></Col>
                 <Col md={10}>
-                    <Row style={{marginTop: '20px'}}>
+                    <Row>
                         <Col md={3}>
                         {spotify.topArtists.short.status === 'fulfilled' &&
                             <ArtistCard header='Artist / band of the moment' data={spotify.topArtists.short.content[0]} />
@@ -72,6 +77,27 @@ const Container = () => {
                         {spotify.topTracks.long.status === 'fulfilled' &&
                         <TrackCard header='Favorite track' data={spotify.topTracks.long.content[0]} />
                         }
+                        </Col>
+                    </Row>
+                </Col>
+                <Col md={1}></Col>
+            </Row>
+            <div style={{margin: '20px'}}></div>
+            <Row>
+                <Col md={1}></Col>
+                <Col md={10}>
+                    <Row>
+                        <Col md={4}>
+                        {spotify.topArtists.long.status === 'fulfilled' &&
+                            <ArtistsList long={spotify.topArtists.long.content} short={spotify.topArtists.short.content} />
+                        }
+                        </Col>
+                        <Col md={4}>
+                        {spotify.topTracks.long.status === 'fulfilled' &&
+                            <TracksList long={spotify.topTracks.long.content} short={spotify.topTracks.short.content} />
+                        }
+                        </Col>
+                        <Col md={4}>
                         </Col>
                     </Row>
                 </Col>
