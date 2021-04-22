@@ -29,7 +29,6 @@ const Container = () => {
     }
 
     const loadSpotifyData = () => {
-        console.log(user)
         if(spotify.topArtists.short.status === 'none'){
             dispatch(fetchTopArtistsPending('short_term'))
             dispatch(fetchTopArtists(user.accessToken, 'short_term'))
