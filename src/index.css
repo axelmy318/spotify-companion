@@ -4,7 +4,7 @@
   --dt-dark-lighter: #252525;
   --dt-dark-lighter2: #3d3d3d;
   --dt-text: #ffffff;
-  --dt-text-muted: #bdbdbd;
+  --dt-text-muted: #a0a0a0;
 }
 
 body{
@@ -14,7 +14,8 @@ body{
 
 .card {
   background-color: var(--dt-dark-lighter);
-  color: var(--dt-text)
+  color: var(--dt-text);
+  border: 1px solid var(--dt-dark-lighter2);
 }
 
 table {
@@ -62,7 +63,7 @@ tr{
 .nav-item.nav-link:hover {
   background-color: var(--dt-dark-lighter);
   border: 1px solid var(--dt-dark-lighter2);
-  border-bottom: 0px;
+  border-bottom: 1px solid var(--dt-dark-lighter);;
 }
 
 #root {
@@ -70,7 +71,7 @@ tr{
 }
 .text-muted.sm {
   font-size: 90%;
-  color: var(--dt-text-muted)
+  color: var(--dt-text-muted) !important
 }
 
 /*------------ END OF DARK THEME -------------*/

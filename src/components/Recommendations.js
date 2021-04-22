@@ -45,7 +45,6 @@ const Recommendations = ({ status, recommendations, seeds }) => {
                 
             addedNames.push(artists[i].name)
         }
-        console.log('Added names', addedNames, 'String', str)
         return str.substr(0, str.length - 2)
     }
 
