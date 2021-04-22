@@ -101,7 +101,7 @@ const Recommendations = ({ status, recommendations, seeds }) => {
                                         {recommendations.map((track, index) => 
                                             <tr style={{style:'100%'}}>
                                                 <td className='align-middle'>{index+1}</td>
-                                                <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
+                                                <td className='align-middle'><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                                 <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                                 <td className='align-middle'>
                                                     <IconContext.Provider value={{color: 'green', size: '24px'}}>
