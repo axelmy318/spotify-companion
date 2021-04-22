@@ -4,6 +4,29 @@ const HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded'
 }
 
+export const loadRecommendationsPending = () => {
+    return {
+        type: 'LOAD_RECOMMENDATIONS_PENDING',
+        payload: {}
+    }
+}
+
+export const loadRecommendations = (accessToken, seeds) => {
+    return {
+        type: 'LOAD_RECOMMENDATIONS',
+        payload: {
+            promise: axios.get(`https://api.spotify.com/v1/recommendations?limit=${50}&seed_artists=${seeds.artistsSeed.join(',')}&seed_genres=*&seed_tracks=${seeds.tracksSeed.join(',')}`,
+                {
+                    headers: {
+                        ...HEADERS,
+                        Authorization: `Bearer ${accessToken}`
+                    }
+                }
+            )
+        }
+    }
+}
+
 export const fetchTopTracksPending = (term) => {
     return {
         type: `SET_TOP_TRACKS_${term.toUpperCase()}_PENDING`,

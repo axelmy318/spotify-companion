@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
-import { IoTrophySharp as LogoTrophy } from 'react-icons/io5'
+import { FaTrophy as LogoTrophy } from 'react-icons/fa'
 
 const ArtistsList = ({ long, short }) => {
     const [key, setKey] = useState('long');

@@ -7,7 +7,7 @@ import Table from 'react-bootstrap/Table'
 
 import { IconContext } from 'react-icons'
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
-import { IoTrophySharp as LogoTrophy } from 'react-icons/io5'
+import { FaTrophy as LogoTrophy } from 'react-icons/fa'
 
 const TracksList = ({ long, short }) => {
     const [key, setKey] = useState('long');
@@ -32,7 +32,6 @@ const TracksList = ({ long, short }) => {
                 
             addedNames.push(artists[i].name)
         }
-        console.log('Added names', addedNames, 'String', str)
         return str.substr(0, str.length - 2)
     }
 
@@ -80,7 +79,7 @@ const TracksList = ({ long, short }) => {
                                         <tr style={{style:'100%'}}>
                                             <td className='align-middle'>{displayTrophy(index+1)}</td>
                                             <td><img alt='' src={`${track.album.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
-                                            <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{track.artists[0].name}</span></td>
+                                            <td className='align-middle'>{track.name}&nbsp;<span className='text-muted sm'>-&nbsp;{getFeaturingNamesString(track.artists)}</span></td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>
                                                     <LogoSpotify className='clickable' onClick={(e) => goToSpotifyPage(e, track.external_urls.spotify)}/>

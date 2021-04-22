@@ -14,6 +14,7 @@ import TrackCard from './TrackCard'
 import ArtistCard from './ArtistCard'
 import ArtistsList from './ArtistsList'
 import TracksList from './TracksList'
+import Recommendations from './Recommendations'
 
 const Container = () => {
     const user = useSelector(state => state.User)
@@ -49,6 +50,31 @@ const Container = () => {
     if(user.code !== null && user.code !== undefined)
         loadSpotifyData()
 
+    const getSeedsFrom = (dataset) => {
+        const samples = 2
+        const dataSample = []
+        if(dataset.length < samples) return;
+
+        while(dataSample.length < samples){
+            let pick = Math.floor(Math.random() * dataset.length)
+
+            if(!dataSample.includes(pick))
+            dataSample.push(pick)
+        }
+
+        const artistsSeed = []
+        const tracksSeed = []
+
+        dataSample.map(sampleId => {
+            tracksSeed.push(dataset[sampleId].id)
+            artistsSeed.push(dataset[sampleId].artists[0].id)
+        })
+
+        return {
+            artistsSeed, tracksSeed
+        }
+    }
+
     return (
         <div>
             <div style={{margin: '20px'}}>
@@ -70,12 +96,12 @@ const Container = () => {
                         </Col>
                         <Col md={3}>
                         {spotify.topTracks.short.status === 'fulfilled' &&
-                        <TrackCard header='Track of the moment' data={spotify.topTracks.short.content[0]} />
+                            <TrackCard header='Track of the moment' data={spotify.topTracks.short.content[0]} />
                         }
                         </Col>
                         <Col md={3}>
                         {spotify.topTracks.long.status === 'fulfilled' &&
-                        <TrackCard header='Favorite track' data={spotify.topTracks.long.content[0]} />
+                            <TrackCard header='Favorite track' data={spotify.topTracks.long.content[0]} />
                         }
                         </Col>
                     </Row>
@@ -98,6 +124,9 @@ const Container = () => {
                         }
                         </Col>
                         <Col md={4}>
+                        {spotify.topTracks.short.status === 'fulfilled' &&
+                            <Recommendations status={spotify.recommendations.status} recommendations={spotify.recommendations.content} seeds={getSeedsFrom(spotify.topTracks.short.content)} />
+                        }
                         </Col>
                     </Row>
                 </Col>

@@ -18,11 +18,34 @@ const initialState = {
             status: 'none',
             content: []
         }
+    },
+    recommendations: {
+        status: 'none',
+        content: []
     }
 }
 
 const SpotifyReducer = (state = initialState, action) => {
     switch(action.type){
+        case 'LOAD_RECOMMENDATIONS_PENDING':
+            return {
+                ...state,
+                recommendations: {
+                    ...state.recommendations,
+                    status: 'pending'
+                }
+            }
+        case 'LOAD_RECOMMENDATIONS_FULFILLED':
+            console.log(action.payload.data)
+            let data = action.payload.data.tracks
+            return {
+                ...state,
+                recommendations: {
+                    ...state.recommendations,
+                    status: 'fulfilled',
+                    content: [...data]
+                }
+            }
         case 'SET_TOP_TRACKS_SHORT_TERM_PENDING':
             return {
                 ...state,
