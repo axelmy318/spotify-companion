@@ -1,5 +1,5 @@
 import { Route, Switch, useHistory } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import queryString from 'query-string'
 
 import { fetchToken, fetchTokenPending } from '../redux/actions/User'

@@ -2,9 +2,10 @@ import React from 'react'
 
 import {formatNumber} from '../functions/formatNumber'
 
-import {Row, Col, Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap'
+import Card from 'react-bootstrap/Card'
+import Button from 'react-bootstrap/Button'
 
-import { ImSpotify as LogoSpotify } from 'react-icons/all'
+import { ImSpotify as LogoSpotify } from 'react-icons/im'
 
 const FavouriteTrack = ({ header, data }) => {
     return (

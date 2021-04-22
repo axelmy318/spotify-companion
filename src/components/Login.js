@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
-import { ImSpotify as LogoSpotify } from 'react-icons/all'
+import { ImSpotify as LogoSpotify } from 'react-icons/im'
 
 const Login = () => {
     const authorizeSpotify = (e) => {

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import queryString from 'query-string'
 
 const HEADERS = {
     'Content-Type': 'application/x-www-form-urlencoded'
