@@ -32,7 +32,6 @@ const Recommendations = ({ status, recommendations, seeds }) => {
 
     const loadRecommendations = (e) => {
         if(e) e.preventDefault()
-        console.log("Seeds", seeds)
         dispatch(fetchRecommendationsPending())
         dispatch(fetchRecommendations(user.accessToken, seeds))
     }
@@ -98,7 +97,7 @@ const Recommendations = ({ status, recommendations, seeds }) => {
                     >
                         <Tab eventKey="tracks" title="Tracks" >
                             <Table style={{marginTop: '20px'}}>
-                                <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
+                                <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}} className='scrollbar'>
                                     <tbody style={LIST_STYLE}>
                                         {recommendations.map((track, index) => 
                                             <tr style={{style:'100%'}}>

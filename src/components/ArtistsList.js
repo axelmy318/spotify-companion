@@ -66,7 +66,7 @@ const ArtistsList = ({ long, short }) => {
                 >
                     <Tab eventKey="long" title="Long term" >
                         <Table style={{marginTop: '20px'}}>
-                            <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
+                            <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}} className='scrollbar'>
                                 <tbody style={LIST_STYLE}>
                                     {long.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
@@ -86,7 +86,7 @@ const ArtistsList = ({ long, short }) => {
                     </Tab>
                     <Tab eventKey="short" title="Recently">
                         <Table style={{marginTop: '20px'}}>
-                            <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}}>
+                            <div style={{height: cardHeight, maxHeight: cardHeight, overflowY: 'scroll'}} className='scrollbar'>
                                 <tbody style={LIST_STYLE}>
                                     {short.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
