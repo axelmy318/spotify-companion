@@ -37,7 +37,6 @@ const SpotifyReducer = (state = initialState, action) => {
                 }
             }
         case 'LOAD_RECOMMENDATIONS_FULFILLED':
-            console.log(action.payload.data)
             let data = action.payload.data.tracks
             return {
                 ...state,
