@@ -69,9 +69,28 @@ tr{
 #root {
   overflow-x: hidden
 }
+
 .text-muted.sm {
   font-size: 90%;
   color: var(--dt-text-muted) !important
+}
+
+.dropdown-menu {
+  background-color: var(--dt-dark-lighter);
+  border: 1px solid var(--dt-dark-lighter2);
+  color: var(--dt-text) !important
+}
+
+.dropdown-item {
+  color: var(--dt-text) !important
+}
+
+.dropdown-divider {
+  border-top: 1px solid var(--dt-dark-lighter2)
+}
+
+.dropdown-item:hover {
+  background-color: var(--dt-dark-lighter2) !important;
 }
 
 /*------------ END OF DARK THEME -------------*/
