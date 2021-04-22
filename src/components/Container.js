@@ -2,13 +2,18 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 
-import {Row, Col} from 'react-bootstrap'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 
 import {
     fetchTopArtists, fetchTopArtistsPending,
     fetchTopTracks, fetchTopTracksPending
 } from '../redux/actions/Spotify'
-import { ActionType } from '../redux/middleware/promise'
+
+import TrackCard from './TrackCard'
+import ArtistCard from './ArtistCard'
+import ArtistsList from './ArtistsList'
+import TracksList from './TracksList'
 
 const Container = () => {
     const user = useSelector(state => state.User)
@@ -23,13 +28,21 @@ const Container = () => {
     }
 
     const loadSpotifyData = () => {
-        if(spotify.topArtists.status === 'none'){
-            dispatch(fetchTopArtistsPending())
-            dispatch(fetchTopArtists(user.accessToken))
+        if(spotify.topArtists.short.status === 'none'){
+            dispatch(fetchTopArtistsPending('short_term'))
+            dispatch(fetchTopArtists(user.accessToken, 'short_term'))
         }
-        if(spotify.topTracks.status === 'none'){
-            dispatch(fetchTopTracksPending())
-            dispatch(fetchTopTracks(user.accessToken))
+        if(spotify.topTracks.short.status === 'none'){
+            dispatch(fetchTopTracksPending('short_term'))
+            dispatch(fetchTopTracks(user.accessToken, 'short_term'))
+        }
+        if(spotify.topArtists.long.status === 'none'){
+            dispatch(fetchTopArtistsPending('long_term'))
+            dispatch(fetchTopArtists(user.accessToken, 'long_term'))
+        }
+        if(spotify.topTracks.long.status === 'none'){
+            dispatch(fetchTopTracksPending('long_term'))
+            dispatch(fetchTopTracks(user.accessToken, 'long_term'))
         }
     }
 
@@ -38,13 +51,57 @@ const Container = () => {
 
     return (
         <div>
+            <div style={{margin: '20px'}}>
+
+            </div>
             <Row>
-            <Col md={6}>
-                {spotify.topArtists.status === 'fulfilled' && spotify.topArtists.content.map(content => <p>{content.name}</p>)}
-            </Col>
-            <Col md={6}>
-                {spotify.topTracks.status === 'fulfilled' && spotify.topTracks.content.map(content => <p>{content.name}</p>)}
-            </Col>
+                <Col md={1}></Col>
+                <Col md={10}>
+                    <Row>
+                        <Col md={3}>
+                        {spotify.topArtists.short.status === 'fulfilled' &&
+                            <ArtistCard header='Artist / band of the moment' data={spotify.topArtists.short.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topArtists.long.status === 'fulfilled' &&
+                            <ArtistCard header='Favorite artist / band' data={spotify.topArtists.long.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topTracks.short.status === 'fulfilled' &&
+                        <TrackCard header='Track of the moment' data={spotify.topTracks.short.content[0]} />
+                        }
+                        </Col>
+                        <Col md={3}>
+                        {spotify.topTracks.long.status === 'fulfilled' &&
+                        <TrackCard header='Favorite track' data={spotify.topTracks.long.content[0]} />
+                        }
+                        </Col>
+                    </Row>
+                </Col>
+                <Col md={1}></Col>
+            </Row>
+            <div style={{margin: '20px'}}></div>
+            <Row>
+                <Col md={1}></Col>
+                <Col md={10}>
+                    <Row>
+                        <Col md={4}>
+                        {spotify.topArtists.long.status === 'fulfilled' &&
+                            <ArtistsList long={spotify.topArtists.long.content} short={spotify.topArtists.short.content} />
+                        }
+                        </Col>
+                        <Col md={4}>
+                        {spotify.topTracks.long.status === 'fulfilled' &&
+                            <TracksList long={spotify.topTracks.long.content} short={spotify.topTracks.short.content} />
+                        }
+                        </Col>
+                        <Col md={4}>
+                        </Col>
+                    </Row>
+                </Col>
+                <Col md={1}></Col>
             </Row>
         </div>
     )

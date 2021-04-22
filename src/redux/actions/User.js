@@ -35,7 +35,7 @@ export const fetchToken = (code) => {
                 }),
                 {
                     headers: {
-                        'Content-Type':'application/x-www-form-urlencoded'
+                        ...HEADERS
                     }
                 }
             )
