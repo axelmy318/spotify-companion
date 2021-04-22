@@ -26,6 +26,7 @@ const initialState = {
 }
 
 const SpotifyReducer = (state = initialState, action) => {
+    action = action.action ? action.action : action
     switch(action.type){
         case 'LOAD_RECOMMENDATIONS_PENDING':
             return {
