@@ -72,7 +72,7 @@ const Recommendations = ({ status, recommendations, seeds }) => {
         return (
             <Card>
                 <Card.Header>
-                    Recommendations
+                    Discover
                     <div style={{float: 'right'}}>
                     <Dropdown >
                         <Dropdown.Toggle as={CustomToggle}></Dropdown.Toggle>
