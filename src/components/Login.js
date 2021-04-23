@@ -4,6 +4,8 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap'
 
 import { ImSpotify as LogoSpotify } from 'react-icons/im'
 
+import Footer from './Footer'
+
 const Login = () => {
     const authorizeSpotify = (e) => {
         e.preventDefault()
@@ -31,6 +33,7 @@ const Login = () => {
                     </Col>
                     <Col md={4}></Col>
                 </Row>
+                <Footer />
             </Container>
         </>
     )
