@@ -15,6 +15,7 @@ import ArtistCard from './ArtistCard'
 import ArtistsList from './ArtistsList'
 import TracksList from './TracksList'
 import Recommendations from './Recommendations'
+import Footer from './Footer'
 
 const Container = () => {
     const user = useSelector(state => state.User)
@@ -132,6 +133,7 @@ const Container = () => {
                 <Col md={1}></Col>
             </Row>
             <div style={{margin: '20px'}}></div>
+            <Footer />
         </div>
     )
 }

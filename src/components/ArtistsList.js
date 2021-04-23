@@ -24,29 +24,15 @@ const ArtistsList = ({ long, short }) => {
     }
 
     const displayTrophy = (number) => {
-        let color = 'white'
-        let size = '15px'
-
-        switch(number){
-            case 1:
-                color = 'gold'
-                size = '28px'
-                break;
-            case 2:
-                color = 'silver'
-                size = '22px'
-                break;
-            case 3:
-                color = '#875600'
-                size = '15px'
-                break;
-            default:
-                break;
-        }
+        let styles = [
+            {color: 'gold', size: '28px'}, 
+            {color: 'silver', size: '22px'}, 
+            {color: '#875600', size: '16px'}
+        ]
 
         if(number >= 1 && number <= 3){
             return (
-                <IconContext.Provider value={{color, size}}>
+                <IconContext.Provider value={styles[number-1]}>
                     <LogoTrophy />
                 </IconContext.Provider>
             )
@@ -71,7 +57,7 @@ const ArtistsList = ({ long, short }) => {
                                     {long.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
                                             <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
-                                            <td><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
+                                            <td className='align-middle'><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{artist.name}</td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>
@@ -91,7 +77,7 @@ const ArtistsList = ({ long, short }) => {
                                     {short.map((artist, index) => 
                                         <tr style={{style:'100%'}}>
                                             <td className='align-middle' style={{paddingRight: '0px', paddingLeft: '0px', textAlign:'center'}}>{displayTrophy(index+1)}</td>
-                                            <td><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
+                                            <td className='align-middle'><img alt='' src={`${artist.images[2].url}`} width={42} style={{borderRadius: '21px', border: '2px solid black'}} /></td>
                                             <td className='align-middle'>{artist.name}</td>
                                             <td className='align-middle'>
                                                 <IconContext.Provider value={{color: 'green', size: '24px'}}>
