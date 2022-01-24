@@ -1,5 +1,13 @@
-# Spotify Companion
+# Spotify Companion 👋
 
-Work in progress...
+A ReactJS interface that shows you some statistics about your listening habits and introduce you to new songs.
 
-Live demo : https://spotify-companion-ff520.web.app/ (not final result, although already usable)
+
+## Check it out 😄
+
+[https://spotify-companion-ff520.web.app/](https://spotify-companion-ff520.web.app/)
+## Main stuff used in the project
+ - ReactJS + Redux, Boostrap, Spotify API, Firebase
+
+## Screenshots 👀
+![screenshot1](https://i.imgur.com/PNVHl9U.jpg)
